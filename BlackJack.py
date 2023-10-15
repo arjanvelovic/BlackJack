@@ -372,4 +372,3 @@ def breakline():
 
 Play = BlackJack()
 Play.mainMenu()
-print(Play.__dir__())

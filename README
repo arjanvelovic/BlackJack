@@ -1,5 +1,5 @@
 This is an object oriented python script for the game of black jack.
-To run the script run BlackJack.py or access [THIS LINK](https://rb.gy/2ekt35)
+To run the script run BlackJack.py
 
 Rules of the Game:
 - Object of the Game: Attempt to beat the dealer by getting a count as close to 21 as possible, without going over 21 (bust).

@@ -1,6 +1,18 @@
 import os
 import random
-os.system('cls')
+import platform
+
+CurrentPlatform = platform.system()
+
+if CurrentPlatform == 'Windows':
+    PlatformClear = 'cls'
+else:
+    PlatformClear = 'clear'
+
+def ClearTerminal():
+    os.system(PlatformClear)
+
+ClearTerminal()
 
 class BlackJack():
     '''
@@ -59,7 +71,7 @@ class BlackJack():
             intnum = int(input)
             if intnum >= minimum and intnum <= maximum:
                 if insurance == False:
-                    os.system('cls')
+                    ClearTerminal()
                 return intnum
             elif intnum < minimum:
                 print(f'That is less than the minimum bet of ${minimum}\nSubmit another bet')
@@ -140,7 +152,7 @@ class BlackJack():
 
             # if player hits
             if decision.lower() in ['hit', 'h', '1', 'one', 'hit me', '']:
-                os.system('cls')
+                ClearTerminal()
                 self.player[hand].append(self.drawCard())
                 self.player[handvalue] = self.calcHandValue(self.player[hand])
                 self.printHand(self.player[hand])
@@ -158,7 +170,7 @@ class BlackJack():
 
             # if player splits, only allows split if user truly has pair and hasn't already split
             elif decision.lower() in ['split', '3', 'three'] and self.player[hand][0][0] == self.player[hand][1][0] and self.player['handsplit'] == None:
-                os.system('cls')
+                ClearTerminal()
                 self.player['handsplit'] = [self.player['hand'][1],self.drawCard()]
                 self.player['handvaluesplit'] = self.calcHandValue(self.player['handsplit'])
 
@@ -191,7 +203,7 @@ class BlackJack():
 
             # if player doubles down, only allows if user truly has a handvalue of 9,10, or 11 and hasnt already split
             elif decision.lower() in ['double down', 'dd', 'double', 'down', '4', 'four'] and self.player[handvalue] in [9, 10, 11] and self.player['handsplit'] == None:
-                os.system('cls')
+                ClearTerminal()
                 self.player['bet'] += self.player['bet']
                 self.player[hand].append(self.drawCard())
                 self.player[handvalue] = self.calcHandValue(self.player[hand])
@@ -199,7 +211,7 @@ class BlackJack():
                 breakline()
                 break
             else:
-                os.system('cls')
+                ClearTerminal()
                 print('That was not a valid input\nTry another input')
                 breakline()
 
@@ -232,7 +244,7 @@ class BlackJack():
 
     # handles all logic for a round
     def round(self):
-        os.system('cls')
+        ClearTerminal()
         # resets defaults for each round
         self.player['bet'] = None
         self.player['notbusted'] = True
@@ -339,7 +351,7 @@ Added Features to Version 2.0
 ''')
         
     def mainMenu(self):
-        os.system('cls')
+        ClearTerminal()
         self.deckAttributes()
         self.playerAttributes()
         # holds user in mainmenu until exists
@@ -350,19 +362,19 @@ Added Features to Version 2.0
             breakline()
             maininput = input('1) Play a Round     2) Read the Rules      3) Quit\n')
             if maininput.lower() in ['1', 'one', 'play', 'p', 'play a round', 'blackjack', '21', '']:
-                os.system('cls')
+                ClearTerminal()
                 self.round()
             elif maininput.lower() in ['2', 'two', 'read', 'rules', 'read the rules', 'r']:
-                os.system('cls')
+                ClearTerminal()
                 self.rules()
                 input('')
-                os.system('cls')
+                ClearTerminal()
             elif maininput.lower() in ['3', 'three', 'quit', 'q', 'esc', 'exit']:
-                os.system('cls')
+                ClearTerminal()
                 print('See you later aligator!')
                 break
             else:
-                os.system('cls')
+                ClearTerminal()
                 print('That was not a valid input\nTry another input')
                 breakline()
 
